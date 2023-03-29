@@ -3,11 +3,11 @@
 namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Movie;
+use App\Entity\Shape;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MovieController extends AbstractController
+class ShapeController extends AbstractController
 {
     private $entityManager;
 
@@ -15,24 +15,20 @@ class MovieController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-    /**
-     * @Route("/getmovie/{id}", methods={"GET"})
-     */
+
     public function getItem(int $id): Response
     {
-        $movie = $this->entityManager->getRepository(Movie::class)->find($id);
+        $shape = $this->entityManager->getRepository(Shape::class)->find($id);
 
-
-        if (!$movie) {
-            throw $this->createNotFoundException('Movie not found');
+        if (!$shape) {
+            throw $this->createNotFoundException('Shape not found');
         }
 
         $data = [
-            'id' => $movie->getId(),
-            'nameCinema' => $movie->getNameCinema(),
-            'nameMovie' => $movie->getNameMovie(),
+            'id' => $shape->getId(),
+            'color' => $shape->getColor(),
+            'shape' => $shape->getShape(),
         ];
-
         return $this->json($data);
     }
 }
