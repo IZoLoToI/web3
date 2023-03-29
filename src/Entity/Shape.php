@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Potato;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\ShapeRepository;
+use App\Repository\PotatoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ApiResource]
-#[ORM\Entity(repositoryClass: ShapeRepository::class)]
+#[ORM\Entity(repositoryClass: PotatoRepository::class)]
 class Potato
 {
     private ?int $id = null;
