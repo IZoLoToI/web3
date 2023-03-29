@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Movie;
+use App\Entity\Shape;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MovieGetCollectionController extends AbstractController
+class ShapeGetCollectionController extends AbstractController
 {
     private $entityManager;
 
@@ -18,23 +18,17 @@ class MovieGetCollectionController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/getcollectionmovie", methods={"GET"})
-     */
     public function getCollection(Request $request): Response
     {
-        $movies = $this->entityManager->getRepository(Movie::class)->findAll();
-
+        $shape = $this->entityManager->getRepository(Shape::class)->findAll();
         $data = [];
-        foreach ($movies as $movie) {
+        foreach ($shapes as $shape) {
             $data[] = [
-                'id' => $movie->getId(),
-                'nameCinema' => $movie->getNameCinema(),
-                'nameMovie' => $movie->getNameMovie(),
+                'id' => $shape->getId(),
+                'color' => $shape->getColor(),
+                'shape' => $shape->getShape(),
             ];
         }
-
         return $this->json($data);
     }
-
 }
