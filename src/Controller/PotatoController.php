@@ -7,7 +7,7 @@ use App\Entity\Potato;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ShapeController extends AbstractController
+class PotatoController extends AbstractController
 {
     private $entityManager;
 
