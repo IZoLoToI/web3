@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Movie;
+use App\Entity\Shape;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MovieDeleteController extends AbstractController
+class ShapeDeleteController extends AbstractController
 {
-
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -18,20 +17,17 @@ class MovieDeleteController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/deletemovie/{id}", methods={"DELETE"})
-     */
     public function delete(int $id): Response
     {
-        $movie = $this->entityManager->getRepository(Movie::class)->find($id);
+        $shape = $this->entityManager->getRepository(Shape::class)->find($id);
 
-        if (!$movie) {
-            throw $this->createNotFoundException('Movie not found');
+        if (!$shape) {
+            throw $this->createNotFoundException('Shape not found');
         }
 
-        $this->entityManager->remove($movie);
+        $this->entityManager->remove($shape);
         $this->entityManager->flush();
 
-        return $this->json(['message' => 'Movie deleted']);
+        return $this->json(['message' => 'Shape deleted']);
     }
 }
