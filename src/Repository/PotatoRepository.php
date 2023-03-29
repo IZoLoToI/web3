@@ -10,7 +10,7 @@ class PotatoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Movie::class);
+        parent::__construct($registry, Potate::class);
     }
 
     public function save(Potato $entity, bool $flush = false): void
