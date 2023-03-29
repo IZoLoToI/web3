@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Shape;
+use App\Entity\Potato;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
