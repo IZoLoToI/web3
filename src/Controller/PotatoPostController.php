@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Movie;
+use App\Entity\Potato;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MoviePostController extends AbstractController
+class PotatoPostController extends AbstractController
 {
     private $entityManager;
 
@@ -18,20 +18,16 @@ class MoviePostController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/addmovie", methods={"POST"})
-     */
     public function post(Request $request): Response
     {
         $data = json_decode($request->getContent(), true);
 
-        $movie = new Movie();
-        $movie->setNameCinema($data['nameCinema']);
-        $movie->setNameMovie($data['nameMovie']);
+        $potato = new Potato();
+        $potato->setColor($data['color']);
+        $potato->setShape($data['shape']);
 
         $this->entityManager->flush();
 
-        return $this->json(['id' => $movie->getId()]);
+        return $this->json(['id' => $potato->getId()]);
     }
-
 }
