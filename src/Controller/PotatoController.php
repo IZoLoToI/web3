@@ -18,16 +18,16 @@ class ShapeController extends AbstractController
 
     public function getItem(int $id): Response
     {
-        $shape = $this->entityManager->getRepository(Shape::class)->find($id);
+        $potato = $this->entityManager->getRepository(Potato::class)->find($id);
 
-        if (!$shape) {
-            throw $this->createNotFoundException('Shape not found');
+        if (!$potato) {
+            throw $this->createNotFoundException('Potato not found');
         }
 
         $data = [
-            'id' => $shape->getId(),
-            'color' => $shape->getColor(),
-            'shape' => $shape->getShape(),
+            'id' => $potato->getId(),
+            'color' => $potato->getColor(),
+            'shape' => $potato->getShape(),
         ];
         return $this->json($data);
     }
