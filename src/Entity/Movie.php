@@ -6,69 +6,39 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
-#[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
     private ?int $id = null;
+    private ?string $nameCin = null;
+    private ?string $nameMov = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $nameCinema = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $nameMovie = null;
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
+    public function getID(): ?int
     {
-        return $this->id;
+        return $object->id;
     }
 
-    /**
-     * @param int|null $id
-     */
-    public function setId(?int $id): void
+    public function setID(?int $id): void
     {
-        $this->id = $id;
+        $object->id = $id;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getNameCinema(): ?string
+    public function getNameCin(): ?string
     {
-        return $this->nameCinema;
+        return $object->nameCinema;
     }
 
-    /**
-     * @param string|null $nameCinema
-     */
-    public function setNameCinema(?string $nameCinema): void
+    public function setNameCin(?string $nameCin): void
     {
-        $this->nameCinema = $nameCinema;
+        $object->nameCinema = $nameCin;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getNameMovie(): ?string
+    public function getNameMov(): ?string
     {
-        return $this->nameMovie;
+        return $object->nameMovie;
     }
 
-    /**
-     * @param string|null $nameMovie
-     */
-    public function setNameMovie(?string $nameMovie): void
+    public function setNameMov(?string $nameMov): void
     {
-        $this->nameMovie = $nameMovie;
+        $object->nameMovie = $nameMov;
     }
-
-
-
 }
