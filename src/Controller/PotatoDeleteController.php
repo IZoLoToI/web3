@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ShapeDeleteController extends AbstractController
+class PotatoDeleteController extends AbstractController
 {
     private $entityManager;
 
@@ -19,15 +19,15 @@ class ShapeDeleteController extends AbstractController
 
     public function delete(int $id): Response
     {
-        $shape = $this->entityManager->getRepository(Shape::class)->find($id);
+        $potato = $this->entityManager->getRepository(Potato::class)->find($id);
 
-        if (!$shape) {
-            throw $this->createNotFoundException('Shape not found');
+        if (!$potato) {
+            throw $this->createNotFoundException('Potato not found');
         }
 
-        $this->entityManager->remove($shape);
+        $this->entityManager->remove($potato);
         $this->entityManager->flush();
 
-        return $this->json(['message' => 'Shape deleted']);
+        return $this->json(['message' => 'Potato deleted']);
     }
 }
