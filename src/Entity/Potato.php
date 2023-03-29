@@ -10,8 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PotatoRepository::class)]
 class Potato
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
     private ?int $id = null;
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $color = null;
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $shape = null;
 
     public function getID(): ?int
