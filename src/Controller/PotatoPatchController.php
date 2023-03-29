@@ -18,16 +18,16 @@ class PotatoPatchController extends AbstractController
     }
     public function patch(Request $request, int $id): Response
     {
-        $book = $this->entityManager->getRepository(Potato::class)->find($id);
-        if (!$book) {
+        $potato = $this->entityManager->getRepository(Potato::class)->find($id);
+        if (!$potato) {
             throw $this->createNotFoundException('Potato not found with id ' . $id);
         }
         $data = json_decode($request->getContent(), true);
-        if (isset($data['nameCinema'])) {
-            $book->setColor($data['color']);
+        if (isset($potato['color'])) {
+            $potato->setColor($data['color']);
         }
-        if (isset($data['nameMovie'])) {
-            $book->setNameMovie($data['shape']);
+        if (isset($data['shape'])) {
+            $book->setShape($data['shape']);
         }
         $this->entityManager->flush();
         return $this->json(['message' => 'Potatoes updated']);
