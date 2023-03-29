@@ -2,18 +2,18 @@
 
 namespace App\Repository;
 
-use App\Entity\Movie;
+use App\Entity\Potato;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-class MovieRepository extends ServiceEntityRepository
+class PotatoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Movie::class);
     }
 
-    public function save(Movie $entity, bool $flush = false): void
+    public function save(Potato $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -22,7 +22,7 @@ class MovieRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Movie $entity, bool $flush = false): void
+    public function remove(Potato $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
